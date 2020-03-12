@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:dev:aot": "ng build --aot",
+    "build:prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint --type-check",
     "lint:fix": "ng lint --type-check --fix",

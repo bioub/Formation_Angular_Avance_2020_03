@@ -4,12 +4,11 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, DoCheck } from '@ang
   selector: 'todo-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ListComponent implements DoCheck {
 
-  @Input()
-  public todos: string[];
+  @Input() todos: string[];
 
   constructor() { }
 
