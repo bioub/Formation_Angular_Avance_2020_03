@@ -1,0 +1,6 @@
+{
+  "name": "demos-observables",
+  "dependencies": {
+    "rxjs": "^6.5.4"
+  }
+}

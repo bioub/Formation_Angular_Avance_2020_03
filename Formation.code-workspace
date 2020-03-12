@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "TypeScript"
+		},
+		{
+			"path": "Observable"
 		}
 	],
 	"settings": {}
