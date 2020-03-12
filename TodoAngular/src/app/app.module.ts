@@ -21,7 +21,7 @@ import { ItemComponent } from './item/item.component';
     NgbModule,
   ],
   providers: [
-    NgbTooltipConfig
+    NgbTooltipConfig,
   ],
   bootstrap: [AppComponent]
 })
