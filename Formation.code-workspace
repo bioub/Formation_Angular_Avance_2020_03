@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "Observable"
+		},
+		{
+			"path": "AddressBookAngular"
 		}
 	],
 	"settings": {}

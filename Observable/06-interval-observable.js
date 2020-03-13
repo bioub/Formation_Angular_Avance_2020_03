@@ -16,3 +16,10 @@ interval(1000)
   .subscribe(() => {
     console.log('1000ms');
   });
+
+console.log('FIN');
+
+// Marble Graph (où 1 tiret === 250ms)
+// ----c----c----c----c----c----c-....
+// filter(i % 2 === 0)
+// ----c---------c---------c------....

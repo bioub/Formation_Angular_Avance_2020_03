@@ -31,3 +31,17 @@ timeout(1000)
     console.log('1000ms');
     return timeout(1000);
   });
+
+
+// pile d'appels
+// ^
+// |                           setTimeout
+// |setTimeout                 => (executor)  
+// |=> (executor)              Promise
+// |Promise               lg - timeout
+// |timeout        ..⟳.. cb1                   ..⟳.. 
+// +----------------------1002-------------------------------------> temps
+//         
+
+// file d'attente (1000ms) : cb1
+// file d'attente (1002ms) : 
