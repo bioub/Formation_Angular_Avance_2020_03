@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import { ContactService } from './../../core/services/contact/contact.service';
 import { Contact } from './../../shared/models/contact';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'ab-contacts-show',
@@ -11,20 +12,39 @@ import { Contact } from './../../shared/models/contact';
   styleUrls: ['./contacts-show.component.scss']
 })
 export class ContactsShowComponent implements OnInit {
-  public contact: Contact;
+  // public contact: Contact;
+  public contact$: Observable<Contact>;
 
   constructor(
     private route: ActivatedRoute,
     private contactService: ContactService,
-  ) {}
+  ) {
+    console.log('constructor show')
+  }
 
   ngOnInit() {
-    this.route.params
+    this.contact$ = this.route.params
       .map(params => Number(params.id))
       .switchMap((id: number) => this.contactService.getById$(id))
-      .subscribe(contact => {
-        this.contact = contact;
-      });
+      // .subscribe({
+      //   next: (val) => {
+      //     console.log('next show', val);
+      //     this.contact = val;
+
+      //   },
+      //   error: (err) => {
+      //     console.log('error show', err);
+      //   },
+      //   complete: () => {
+      //     console.log('complete show');
+      //   }
+      // });
+
+    // ------1-----2----------3---------------......
+    // ---------{id:1}|----------{id:2}|
+    // -------------------
+    // switchMap()
+    // ---------{id:1}-----------------------------
   }
 
 }

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { ClockComponent } from './clock/clock.component';
 
 @NgModule({
   imports: [
@@ -10,13 +11,13 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule,
   ],
   declarations: [
-    // ClockComponent,
+    ClockComponent,
   ],
   exports: [
     CommonModule,
     FormsModule,
     TranslateModule,
-    // ClockComponent,
+    ClockComponent,
   ]
 })
 export class SharedModule { }

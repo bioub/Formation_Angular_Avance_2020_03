@@ -1,9 +1,6 @@
 {
 	"folders": [
 		{
-			"path": "/Users/romain/Desktop/todo-angular"
-		},
-		{
 			"path": "Langage"
 		},
 		{
@@ -14,6 +11,9 @@
 		},
 		{
 			"path": "AddressBookAngular"
+		},
+		{
+			"path": "TodoAngular"
 		}
 	],
 	"settings": {}

@@ -1,15 +1,36 @@
-<h5>{{'Firstname' | translate}}</h5>
-<p>{{contact?.firstName}}</p>
+<!-- <h5>{{'Firstname' | translate}}</h5>
+<p>{{(contact$ | async)?.firstName}}</p>
 
 <h5>{{'Lastname' | translate}}</h5>
-<p>{{contact?.lastName}}</p>
+<p>{{(contact$ | async)?.lastName}}</p>
 
-<ng-container *ngIf="contact?.email">
+<ng-container *ngIf="(contact$ | async)?.email">
   <h5>{{'Email' | translate}}</h5>
-  <p>{{contact?.email}}</p>
+  <p>{{(contact$ | async)?.email}}</p>
 </ng-container>
 
-<ng-container *ngIf="contact?.telephone">
+<ng-container *ngIf="(contact$ | async)?.telephone">
   <h5>{{'Telephone' | translate}}</h5>
-  <p>{{contact?.telephone}}</p>
+  <p>{{(contact$ | async)?.telephone}}</p>
+</ng-container> -->
+<ng-container *ngIf="contact$ | async as contact else loader">
+  <h5>{{ "Firstname" | translate }}</h5>
+  <p>{{ contact.firstName }}</p>
+
+  <h5>{{ "Lastname" | translate }}</h5>
+  <p>{{ contact.lastName }}</p>
+
+  <ng-container *ngIf="contact.email">
+    <h5>{{ "Email" | translate }}</h5>
+    <p>{{ contact.email }}</p>
+  </ng-container>
+
+  <ng-container *ngIf="contact.telephone">
+    <h5>{{ "Telephone" | translate }}</h5>
+    <p>{{ contact.telephone }}</p>
+  </ng-container>
 </ng-container>
+
+<ng-template #loader>
+  Loading...
+</ng-template>

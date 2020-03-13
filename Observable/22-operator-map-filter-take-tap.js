@@ -8,6 +8,13 @@ const obs$ = interval(1000).pipe(
   map((v) => v * 2)
 );
 
+const obs$ = interval(1000).pipe(
+  take(5),
+  tap((v) => console.log('tap', v)),
+  filter((v) => v % 2 === 0),
+  map((v) => v * 2)
+);
+
 obs$.subscribe({
   next(msg) {
     console.log('next', msg);

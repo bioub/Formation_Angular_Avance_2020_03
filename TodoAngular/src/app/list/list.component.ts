@@ -4,7 +4,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, DoCheck } from '@ang
   selector: 'todo-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent implements DoCheck {
 
@@ -16,4 +16,7 @@ export class ListComponent implements DoCheck {
     console.log('ListComponent checked');
   }
 
+  getTodo(i, item) {
+    return i; // idealement item.id
+  }
 }

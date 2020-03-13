@@ -34,8 +34,17 @@ export class ContactsListComponent implements OnInit {
   }
 
   public refreshList() {
-    this.contactService.getList$().subscribe(contacts => {
-      this.contacts = contacts;
+    this.contactService.getList$().subscribe({
+      next: (val) => {
+        console.log('next list', val);
+        this.contacts = val;
+      },
+      error: (err) => {
+        console.log('error list', err);
+      },
+      complete: () => {
+        console.log('complete list');
+      }
     });
   }
 

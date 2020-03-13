@@ -5,19 +5,32 @@ import { environment } from '../../../../environments/environment';
 
 import { Contact } from '../../../shared/models/contact';
 import { ContactServiceInterface } from './contact-service-interface';
+import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class ContactService implements ContactServiceInterface {
-  public events = new EventEmitter<string>();
+  public events = new Subject<string>();
+
+  public contactsCache$: ReplaySubject<Contact[]>;
 
   constructor(
     private http: HttpClient,
   ) { }
 
   public getList$(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(
+    if (this.contactsCache$) {
+      return this.contactsCache$;
+    }
+
+    this.contactsCache$ = new ReplaySubject<Contact[]>(1);
+
+    this.http.get<Contact[]>(
       `${environment.apiServer}/contacts`,
-    );
+    //  ).subscribe((data)=> this.contactsCache$.next(data)); // appell
+    ).subscribe(this.contactsCache$); // appelle this.contactsCache$.next()
+
+    return this.contactsCache$;
   }
 
   public create$(contact: Contact): Observable<Contact> {

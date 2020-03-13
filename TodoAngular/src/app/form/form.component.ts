@@ -5,7 +5,7 @@ import { Component, OnInit, EventEmitter, Output, DoCheck, ChangeDetectionStrate
   selector: 'todo-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class FormComponent implements DoCheck {
 
